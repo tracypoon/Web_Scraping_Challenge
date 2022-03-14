@@ -63,6 +63,10 @@ def scrape_info():
     table = tables[0]
     table
 
+    table.columns = ["Description" , "Mars", "Earth"]
+    table.set_index(['Description'], inplace=True)
+
+
     #turn the table into html
     html_table = table.to_html()
     html_table

@@ -17,10 +17,10 @@
     </div>
     <h1><b>Latest Mars News</b></h1>
     <h2>{{ mars_data.news_title}}</h2>
-    <h3>{{ mars_data.news_p }} </h3>
+    <p>{{ mars_data.news_p }} </p>
     <div class="container">
       <div class="row ">
-        <div class="col-4">
+        <div class="col-8">
           <h1 class="description-header"><b>Featured Mars Image</b></h1>
           <div class="text-left">
             <img src={{ mars_data.featured_img }} width="300" height="200" alt="Image">
@@ -33,7 +33,7 @@
           </div>
         </div>
       </div>
-     <h4><b>Mars Hemispheres</b></h4>
+     <h4 class="text-center"><b>Mars Hemispheres</b></h4>
      <hr>
      {% for hemisphere in mars_data.hemisphere_img_urls %}
         <div class="col-md-6">
