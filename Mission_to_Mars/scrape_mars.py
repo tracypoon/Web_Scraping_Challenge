@@ -2,8 +2,9 @@ from splinter import Browser
 from bs4 import BeautifulSoup
 from webdriver_manager.chrome import ChromeDriverManager
 import pandas as pd
+import time
 
-def scape_info()
+def scrape_info():
     # Setup splinter
     executable_path = {'executable_path': ChromeDriverManager().install()}
     browser = Browser('chrome', **executable_path, headless=False)
@@ -59,7 +60,7 @@ def scape_info()
     tables
 
     #index the list to select one of the tables
-    table = tables[1]
+    table = tables[0]
     table
 
     #turn the table into html
@@ -83,27 +84,27 @@ def scape_info()
     #create loop to get the requested information
     for result in results:
 
-    hemisphere = {}
+        hemisphere = {}
 
-    #searches for the titles
-    title=result.find('h3').text
-    browser.click_link_by_partial_text(title)
+        #searches for the titles
+        title=result.find('h3').text
+        browser.click_link_by_partial_text(title)
 
     #searches for the image source url
-    html = browser.html
-    soup = BeautifulSoup(html, 'html.parser')
-    output = soup.find("img", class_="wide-image")['src']
-    img_url = f'https://marshemispheres.com/' + output
+        html = browser.html
+        soup = BeautifulSoup(html, 'html.parser')
+        output = soup.find("img", class_="wide-image")['src']
+        img_url = f'https://marshemispheres.com/' + output
 
     #append the results into the empty list and create dictionary
-    hemisphere = {"title" : title, "img_url" : img_url}
-    hemisphere_img_urls.append(hemisphere)
+        hemisphere = {"title" : title, "img_url" : img_url}
+        hemisphere_img_urls.append(hemisphere)
 
     #tells the browser to go back to the original page to search for title again
-    browser.back()
+        browser.back()
 
-    #print out dictionary
-    hemisphere_img_urls
+    # #print out dictionary
+    # hemisphere_img_urls
 
     # Store data in a dictionary
     mars_data = {
